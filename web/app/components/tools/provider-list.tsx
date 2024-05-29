@@ -11,7 +11,7 @@ import { DotsGrid, XClose } from '@/app/components/base/icons/src/vender/line/ge
 import { Colors } from '@/app/components/base/icons/src/vender/line/others'
 import { Route } from '@/app/components/base/icons/src/vender/line/mapsAndTravel'
 import CustomCreateCard from '@/app/components/tools/provider/custom-create-card'
-import ContributeCard from '@/app/components/tools/provider/contribute'
+// import ContributeCard from '@/app/components/tools/provider/contribute'
 import ProviderCard from '@/app/components/tools/provider/card'
 import ProviderDetail from '@/app/components/tools/provider/detail'
 import Empty from '@/app/components/tools/add-tool-modal/empty'
@@ -24,9 +24,9 @@ const ProviderList = () => {
     defaultTab: 'builtin',
   })
   const options = [
-    { value: 'builtin', text: t('tools.type.builtIn'), icon: <DotsGrid className='w-[14px] h-[14px] mr-1'/> },
-    { value: 'api', text: t('tools.type.custom'), icon: <Colors className='w-[14px] h-[14px] mr-1'/> },
-    { value: 'workflow', text: t('tools.type.workflow'), icon: <Route className='w-[14px] h-[14px] mr-1'/> },
+    { value: 'builtin', text: t('tools.type.builtIn'), icon: <DotsGrid className='w-[14px] h-[14px] mr-1' /> },
+    { value: 'api', text: t('tools.type.custom'), icon: <Colors className='w-[14px] h-[14px] mr-1' /> },
+    { value: 'workflow', text: t('tools.type.workflow'), icon: <Route className='w-[14px] h-[14px] mr-1' /> },
   ]
   const [tagFilterValue, setTagFilterValue] = useState<string[]>([])
   const handleTagsChange = (value: string[]) => {
@@ -90,8 +90,8 @@ const ProviderList = () => {
           'relative grid content-start grid-cols-1 gap-4 px-12 pt-2 pb-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grow shrink-0',
           currentProvider && 'pr-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
         )}>
-          {activeTab === 'builtin' && <ContributeCard />}
-          {activeTab === 'api' && <CustomCreateCard onRefreshData={getProviderList}/>}
+          {/* activeTab === 'builtin' && <ContributeCard /> */}
+          {activeTab === 'api' && <CustomCreateCard onRefreshData={getProviderList} />}
           {filteredCollectionList.map(collection => (
             <ProviderCard
               active={currentProvider?.id === collection.id}
@@ -100,7 +100,7 @@ const ProviderList = () => {
               collection={collection}
             />
           ))}
-          {!filteredCollectionList.length && <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'><Empty/></div>}
+          {!filteredCollectionList.length && <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'><Empty /></div>}
         </div>
       </div>
       <div className={cn(
@@ -109,7 +109,7 @@ const ProviderList = () => {
       )}>
         {currentProvider && <ProviderDetail collection={currentProvider} onRefreshData={getProviderList} />}
       </div>
-      <div className='absolute top-5 right-5 p-1 cursor-pointer' onClick={() => setCurrentProvider(undefined)}><XClose className='w-4 h-4'/></div>
+      <div className='absolute top-5 right-5 p-1 cursor-pointer' onClick={() => setCurrentProvider(undefined)}><XClose className='w-4 h-4' /></div>
     </div>
   )
 }
